@@ -1,0 +1,104 @@
+import java.util.Random;
+import java.util.Scanner;
+
+public class uts_amanda {
+    public static int jumlahKopi=1250;
+    public static String[] KopiDontBeLate = new String[400];
+    public static String[] KopiGoncangJiwa = new String[300];
+    public static String[] KopiJalanKenangan = new String[300];
+    public static String[] KopiPahitTanpaRasa = new String[250];
+    public static void kopiFavorit(){
+        System.out.println(" Kopi Favorit : Kopi Don't Be Late");
+    }
+    public static void infoKopi(){
+        int kopiGoncang=0;
+        for(int index = 0; index<KopiGoncangJiwa.length;index++){
+            if(KopiGoncangJiwa[index] !=null){
+                kopiGoncang++;
+            }
+        }
+        int kopiDont=0;
+        for(int index=0;index< KopiDontBeLate.length;index++){
+            if(KopiDontBeLate[index] !=null);{
+                kopiDont++;
+            }
+        }
+        int kopiJalan=0;
+        for(int index=0;index< KopiJalanKenangan.length;index++){
+            if(KopiJalanKenangan[index] !=null){
+                kopiGoncang++;
+            }
+        }
+        int kopiPahit=0;
+        for(int index=0;index<KopiPahitTanpaRasa.length;index++){
+            if(KopiPahitTanpaRasa[index] !=null){
+                kopiPahit++;
+            }
+        }
+        int sisaKopi=jumlahKopi-kopiDont-kopiGoncang-kopiJalan-kopiPahit;
+        System.out.println(" Jumlah Pesanan Kopi Don't Be Late : "+kopiDont);
+        System.out.println(" Jumlah Pesanan Kopi Goncang Jiwa : "+kopiGoncang);
+        System.out.println(" Jumlah Pesanan Kopi Jalan Kenangan : "+kopiJalan);
+        System.out.println(" Jumlah Pesanan Kopi Pahit Tanpa Rasa : "+kopiPahit);
+        System.out.println(" Jumlah Kopi : "+jumlahKopi+" | Sisa Kopi : "+sisaKopi);
+        kopiFavorit();
+    }
+    public static void CheckIndexArray(String[] myArray,String kopi){
+        int now =0;
+        for(int index=0;index< myArray.length;index++){
+            if(myArray[index] !=null)
+                now=index+1;
+        }
+        if(now< myArray.length){
+            myArray[now]=kopi;
+        }
+    }
+    public static void saveOrder(int order,String Kopi){
+        switch (order){
+            case 1:
+                CheckIndexArray(KopiDontBeLate,Kopi);
+                System.out.println("Selamat Menikmati Kopi Anda");
+                infoKopi();
+                break;
+            case 2:
+                CheckIndexArray(KopiGoncangJiwa,Kopi);
+                System.out.println("Selamat Menikmati Kopi Anda");
+                infoKopi();
+                break;
+            case 3:
+                CheckIndexArray(KopiJalanKenangan,Kopi);
+                System.out.println("Selamat Menikmati Kopi Anda");
+                infoKopi();
+                break;
+            case 4:
+                CheckIndexArray(KopiPahitTanpaRasa,Kopi);
+                System.out.println("Selamat Menikmati Kopi Anda");
+                infoKopi();
+                break;
+        }
+
+    }
+    public static void pesanan(){
+        while(true){
+            Scanner x = new Scanner(System.in);
+            System.out.println("    MENU KENANGAN JIWA  ");
+            System.out.println();
+            System.out.println("1. Kopi Don't Be Late");
+            System.out.println("2. Kopi Goncang Jiwa");
+            System.out.println("3. Kopi Jalan Kenangan");
+            System.out.println("4. Kopi Pahit Tanpa Rasa");
+            System.out.print("Silahkan Pilih Kopi : ");
+            String kopi = x.nextLine();
+            if(kopi.isBlank()){
+                System.out.println("Harap Pilih Pesanan Anda !");
+            }else{
+                Random z = new Random();
+                int chooseKopi = z.nextInt(4);
+                saveOrder(chooseKopi,kopi);
+            }
+        }
+    }
+    public static void main(String[] args) {
+        pesanan();
+    }
+}
